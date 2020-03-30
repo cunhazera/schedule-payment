@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class PaymentServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    // @Test
+    @Test
     public void testInvalidDateInPastException() {
         Mockito.when(creditCardRepository.findCreditCardByCardNumber(Mockito.anyInt())).thenReturn(Optional.of(new CreditCard()));
         PaymentDTO paymentDTO = new PaymentDTO();
@@ -45,7 +46,7 @@ public class PaymentServiceTest {
         assertThrows(InvalidDueDateException.class, () -> paymentService.scheduleNewPayment(paymentDTO));
     }
 
-    // @Test
+    @Test
     public void testNoCreditCardException() {
         Mockito.when(creditCardRepository.findCreditCardByCardNumber(Mockito.anyInt())).thenReturn(Optional.empty());
         PaymentDTO paymentDTO = new PaymentDTO();
@@ -55,7 +56,7 @@ public class PaymentServiceTest {
         assertThrows(NoCreditCardException.class, () -> paymentService.scheduleNewPayment(paymentDTO));
     }
 
-    // @Test
+    @Test
     public void testNoPaymentException() {
         Mockito.when(paymentRepository.findByIdOptional(Mockito.anyInt())).thenReturn(Optional.empty());
         assertThrows(NoPaymentException.class, () -> paymentService.findPayment(1));

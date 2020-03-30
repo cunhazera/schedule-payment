@@ -50,12 +50,12 @@ public class PaymentResourceTest {
                 .statusCode(200);
     }
 
-    // @Test
+    @Test
     public void testFindPaymentById() throws JsonProcessingException {
         CreditCardDTO creditCard = new CreditCardDTO();
-        creditCard.setCardNumber(1);
-        creditCard.setSecurityCode(123);
-        creditCard.setOwnerName("USUARIO CARTAO");
+        creditCard.setCardNumber(11111111);
+        creditCard.setSecurityCode(999);
+        creditCard.setOwnerName("USER");
         creditCard.setEmissionDate("2019-01-01");
         creditCard.setValidThru("2024-05-01");
         given().contentType("application/json").body(creditCard).post("/credit-cards").then().statusCode(200);
@@ -81,7 +81,7 @@ public class PaymentResourceTest {
                 .body("amount", is(payment.getAmount()));
     }
 
-    //@Test
+    @Test
     public void testNoCreditCard() {
         PaymentDTO payment = new PaymentDTO();
         payment.setDueDate("2030-03-03 12:30:30");

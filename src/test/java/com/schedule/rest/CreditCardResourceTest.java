@@ -18,8 +18,8 @@ public class CreditCardResourceTest {
     @Test
     public void testNewCreditCard() {
         CreditCardDTO creditCard = new CreditCardDTO();
-        creditCard.setCardNumber(12341234);
-        creditCard.setSecurityCode(321);
+        creditCard.setCardNumber(18273645);
+        creditCard.setSecurityCode(456);
         creditCard.setOwnerName("USUARIO CARTAO");
         creditCard.setEmissionDate("2019-01-01");
         creditCard.setValidThru("2024-05-01");
